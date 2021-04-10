@@ -1,0 +1,43 @@
+/*Function to calculate julian days */
+int julian(int d, int m, int y)
+{
+int j=d;
+switch(m-l)
+{
+case 11: j+=30;
+case 10: j+=31;
+case 9 : j+=30;
+case 8: j+=31;
+case 7 : j+=31;
+case 6 : j+=30;
+case 5 : j+=31;
+case 4 : j+=30;
+case 3 : j+=31;
+case' 2 : j+=28;
+case 1: j+=31;
+}
+if(isLeap(y) && m!=l && m!=2)
+j=j+l;
+return j;
+}/*End of julian()*/
+"Function to get
+id revJulian (int
+the
+j,
+value
+int y,
+of day and month
+int *d, int *m)
+from julian days */
+int i;
+int month[13]={0,31,28,31,30,31,30,3i,31,30,31,30,31};
+if (isLeap (y) )
+month[2]=29;
+for(i=1;i<=12;i++)
+{
+if (j <=month [i] )
+break;
+j=j-month[i];
+*d=j;
+*m=i;
+*End of revJulian()*/
