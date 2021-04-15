@@ -1,112 +1,175 @@
-#include <calculator_operations.h>
-
-/* Status of the operation requested */
-#define VALID   (1)
-#define INVALID (0)
-
-/* Calculator operation requested by user*/
-unsigned int calculator_operation = 0;
-
-/* Operands on which calculation is performed */
-int calculator_operand1 = 0;
-int calculator_operand2 = 0;
-
-/* Valid operations */
-enum operations{ ADD=1, SUBTRACT, MULTIPLY, DIVIDE, EXIT };
-
-/* Display the menu of operations supported */
-void calculator_menu(void);
-/* Verifies the requested operations validity */
-int valid_operation(int operation);
-
-
-/* Start of the application */
-int main(int argc, char *argv[])
+#include "dtmanip.h"
+int main()
 {
-    printf("\n****Calculator****\n");
-    while(1)
-    {
-        calculator_menu();
-    }
-}
-
-void calculator_menu(void)
+int choice;
+char date[11] ,date1[11] ,date2[11];
+char dayWeek[10] ,newDate[11];
+int iyear, imonth, dyear, dmonth, days;
+int y,m,d;
+while(1)
 {
-    printf("\nAvailable Operations\n");
-    printf("\n1. Add\n2. Subtract\n3. Multiply\n4. Divide\n5. Exit");
-    printf("\n\tEnter your choice\n");
-   
-     __fpurge(stdin);
-    scanf("%d", &calculator_operation);
-
-    if(EXIT == calculator_operation)
+    printf("1. Date validation\n");
+    printf("2. Compare dates\n");
+    printf ("3. Difference of Dates in days\n");
+    printf ("4. Difference of Dates in years, months, days\n");
+    printf ("5. Day of week\n");
+    printf("6. Add years\n");
+    printf("7. Add months\n");
+    printf("8. Add days\n");
+    printf("9. Subtract years\n");
+    printf ("10. Subtract months\n");
+    printf("ll. Subtract days\n");
+    printf("12. Exit\n");
+    printf ("Enter your choice : ");
+    scanf("%d", &choice); 
+    switch(choice)
     {
-        printf("\nThank you. Exiting the Application\n");
-        exit(0);
-    }
-
-    if(INVALID != valid_operation(calculator_operation))
-    {
-        printf("\n\tEnter your Numbers with space between them\n");
-        __fpurge(stdin);
-        scanf("%d %d", &calculator_operand1, &calculator_operand2);
-    }
-    else
-    {
-        printf("\n\t---Wrong choice---\nEnter to continue\n");
-        __fpurge(stdin);
-        getchar();
-        return;
-        
-    }
-    switch(calculator_operation)
-    {
-        case ADD:
-            printf("\n\t%d + %d = %d\nEnter to continue", 
-            calculator_operand1, 
-            calculator_operand2,
-            add(calculator_operand1, calculator_operand2));
-            
-            __fpurge(stdin);
-            getchar();
+        case 1:
+            printf("Enter date (dd/mm/yyyy) : ");
+            scanf("%s",date);
+            if(isValid(date))
+                printf("Valid date\n");
+            else
+                printf("Not a Valid Date\n");
             break;
-        case SUBTRACT:
-            printf("\n\t%d - %d = %d\nEnter to continue", 
-            calculator_operand1, 
-            calculator_operand2,
-            subtract(calculator_operand1, calculator_operand2));
-            
-            __fpurge(stdin);
-            getchar();
+        case 2:         
+            printf("Enter first date (dd/mm/yyyy) : ");
+            scanf("%s",date1);
+            printf("Enter second date (dd/mm/yyyy) : ");
+            scanf("%s",date2);
+            if(!isValid(date1) || !isValid(date2))
+            {
+                printf("Enter only valid dates\n");
+                break;
+            }
+            if(cmpDate(date1,date2)==0)
+                printf("Date : %s and Date : %s are same. \n",date1,date2);
+            else if(cmpDate(date1,date2)==1)
+                printf("Date : %s < Date : %s \n",date1,date2);
+            else if(cmpDate(date1,date2)==-1)
+                printf("Date : %s > Date : %s \n",date1,date2);
+                break;
+        case 3:
+            printf("Enter first date (dd/mm/yyyy) : ");
+            scanf("%s",date1);
+            printf("Enter second date (dd/mm/yyyy) : ");
+            scanf("%s",date2);
+            if(!isValid(date1) || !isValid(date2))
+            {
+                printf("Enter only valid dates\n");
+                break;
+            }
+            if(cmpDate(date1,date2)==1)
+                days=diffDays(date1,date2);
+            else
+                days=diffDays(date2,date1);
+            printf("Difference in days = %d\n", days);
             break;
-        case MULTIPLY:
-            printf("\n\t%d * %d = %d\nEnter to continue", 
-            calculator_operand1, 
-            calculator_operand2,
-            multiply(calculator_operand1, calculator_operand2));
-            
-            __fpurge(stdin);
-            getchar();
-            break;
-        case DIVIDE:
-            printf("\n\t%d / %d = %d\nEnter to continue", 
-            calculator_operand1, 
-            calculator_operand2,
-            divide(calculator_operand1, calculator_operand2));
-            
-            __fpurge(stdin);
-            getchar();
+        case 4:
+            printf("Enter first date (dd/mm/yyyy) : ");
+            scanf("%s",date1) ;
+            printf("Enter second date (dd/mm/yyyy) : ");
+            scanf("%s",date2) ;
+            if(!isValid(date1) || !isValid(date2))
+            {
+                printf("Enter only valid dates\n");
+                break;
+            }
+            if(cmpDate(date1,date2)==1)
+                diffYMD(date1,date2,&y,&m,&d);
+            else
+                diffYMD(date2,date1,&y,&m,&d);
+            printf("Difference of the two dates is : ");
+            printf("%d years %d months %d days\n",y, m, d);
             break;
         case 5:
-            exit(0);
+            printf("Enter date (dd/mm/yyyy) : ");
+            scanf("%s",date);
+            weekDay(date,dayWeek);
+            printf("Day of week is %s\n",dayWeek);
             break;
+        case 6:
+            printf("Enter date (dd/mm/yyyy) : ");
+            scanf("%s",date) ;
+            if(!isValid(date))
+            {
+                printf ("Enter a valid date\n");
+                break;
+            }
+            printf("Enter the number of years to be added : ");
+            scanf("%d",&iyear);
+            addYear(date,iyear,newDate);
+            printf ("Now the new date is %s\n", newDate);
+            break;
+        case 7:
+            printf ("Enter date (dd/mm/yyyy) : ");
+            scanf("%s",date);
+            if(!isValid(date))
+            {
+                printf ("Enter a valid date\n");
+                break;
+            }
+            printf ("Enter the number of months to be added : ");
+            scanf("%d",&imonth);
+            addMonth(date,imonth,newDate);
+            printf("Now the new date is %s\n",newDate);
+            break;
+        case 8:
+            printf ("Enter date (dd/mm/yyyy) : ");
+            scanf ("%s", date) ;
+            if(!isValid(date))
+            {
+                printf ("Enter a valid date\n");
+                break;
+            }
+            printf ("Enter the number of days to be added : ");
+            scanf("%d",&days);
+            addDays(date,days,newDate);
+            printf ("Now the new date is %s\n", newDate) ;
+            break;
+        case 9:
+            printf("Enter date (dd/mm/yyyy) : ");
+            scanf("%s",date) ;
+            if(!isValid(date))
+            {
+                printf ("Enter a valid date\n");
+                break;
+            }
+            printf ("Enter the number of years to be subtracted : ");
+            scanf("%d",&dyear);
+            subYear(date,dyear,newDate);
+            printf("Now the new date is %s\n",newDate);
+            break;
+        case 10:
+            printf ("Enter date (dd/mm/yyyy) : ");
+            scanf("%s",date);
+            if(!isValid(date))
+            {
+                printf ("Enter a valid date\n");
+                break;
+            }
+            printf ("Enter the number of months to be subtracted : ");
+            scanf("%d",&dmonth);
+            subMonth(date,dmonth,newDate);
+            printf ("Now the new date is %s\n", newDate);
+            break;
+        case 11:
+            printf ("Enter date (dd/mm/yyyy) : ");
+            scanf("%s",date);
+            if(!isValid(date))
+            {
+                printf ("Enter a valid date\n");
+                break;
+            }
+            printf ("Enter the number of days to be subtracted : ");
+            scanf("%d",&days);
+            subDays(date,days,newDate);
+            printf ("Now the new date is %s\n", newDate);
+            break;
+        case 12:
+            exit(1);
         default:
-            printf("\n\t---It should never come here---\n");
-    }
-}
-
-int valid_operation(int operation)
-{
-    /* Check if the operation is a valid operation */
-    return ((ADD <= operation) && (EXIT >= operation)) ? VALID: INVALID;
-}
+            printf ("Wrong choice\n");
+    }/*End of switch*/
+}/*End of while*/
+}/*End of main()*/
