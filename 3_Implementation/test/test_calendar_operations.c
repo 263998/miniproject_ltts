@@ -9,17 +9,10 @@
 void test_Adddays(void);
 void test_Addmonth(void);
 void test_Addyear(void);
-void test_Cmpdate(void);
-void test_Datefmt(void);
 void test_Diffdays(void);
-void test_Diffymd(void);
-void test_Julian(void);
-void test_Leap(void);
 void test_Subdays(void);
 void test_Submonth(void);
 void test_Subyear(void);
-void test_Valid(void);
-void test_Weekdays(void);
 
 
 /* Required by the unity test framework */
@@ -37,16 +30,10 @@ int main()
   RUN_TEST(test_Adddays);
   RUN_TEST(test_Addmonth);
   RUN_TEST(test_Addyear);
-  RUN_TEST(test_Cmpdate);
-  RUN_TEST(test_Datefmt);
   RUN_TEST(test_Diffdays);
-  RUN_TEST(test_Julian);
-  RUN_TEST(test_Leap);
   RUN_TEST(test_Subdays);
   RUN_TEST(test_Submonth);
   RUN_TEST(test_Subyear);
-  RUN_TEST(test_Valid);
-  RUN_TEST(test_Weekdays);
   
 
   /* Close the Unity Test Framework */
@@ -54,30 +41,50 @@ int main()
 }
 
 /* Write all the test functions */ 
-void test_add(void) {
+void test_Adddays(void) {
   TEST_ASSERT_EQUAL(24/03/2021, Adddays(12/03/2021, 12));
   
   /* Dummy fail*/
-  TEST_ASSERT_EQUAL(15000, Addmonth(7500, 7500));
+  TEST_ASSERT_EQUAL(21/01/2020, Adddays(11/01/2020, 10));
 }
-
-void test_subtract(void) {
-  TEST_ASSERT_EQUAL(-3, subtract(0, 3));
+void test_Addmonth(void) {
+  TEST_ASSERT_EQUAL(12/06/2021, Addmonth(12/03/2021, 3));
   
   /* Dummy fail*/
-  TEST_ASSERT_EQUAL(100, subtract(1000, 900));
+  TEST_ASSERT_EQUAL(10/01/2012, Addmonth(10/10/2011, 3));
 }
 
-void test_multiply(void) {
-  TEST_ASSERT_EQUAL(0, multiply(1, 0));
+
+void test_Addyear(void) {
+  TEST_ASSERT_EQUAL(01/01/2022, Addyear(01/01/2020, 2));
   
   /* Dummy fail*/
-  TEST_ASSERT_EQUAL(10, multiply(2, 5));
+  //TEST_ASSERT_EQUAL(100, Addyear(1000, 3));
 }
 
-void test_divide(void) {
-  TEST_ASSERT_EQUAL(0, divide(1, 0));
+void test_Diffdays(void) {
+  TEST_ASSERT_EQUAL(61, Diffdays(10/04/2021, 10/06/2021));
   
   /* Dummy fail*/
-  TEST_ASSERT_EQUAL(1, divide(2, 2));
+  //TEST_ASSERT_EQUAL(1, Diffdays(2, 2));
 }
+
+void test_Subdays(void) {
+  TEST_ASSERT_EQUAL(11/12/2020, Subdays(10/04/2021, 120));
+  
+  /* Dummy fail*/
+  //TEST_ASSERT_EQUAL(1, Subdays(2, 2));
+}
+void test_Submonth(void) {
+  TEST_ASSERT_EQUAL(10/10/2020, Submonth(10/04/2021, 6));
+  
+  /* Dummy fail*/
+  //TEST_ASSERT_EQUAL(1, Submonth(2, 2));
+}
+void test_Subyear(void) {
+  TEST_ASSERT_EQUAL(10/04/2020, Subyear(10/04/2021, 1));
+  
+  /* Dummy fail*/
+  //TEST_ASSERT_EQUAL(1, Subyear(2, 2));
+}
+
