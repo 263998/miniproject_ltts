@@ -3,12 +3,11 @@
 * Calculator application with 4 mathematical operations
 *
 */
-/*#ifndef __CALENDAR_OPERATIONS_H__*/
-/*#define __CALENDAR_OPERATIONS_H__*/
+#ifndef __DTMANIP_H__
+#define __DTMANIP_H__
 
-/*#include <stdio.h>
-#include <stdlib.h>*/
-/*#include <stdio_ext.h>*/
+#include <stdio.h>
+#include <stdlib.h>
 
 void formDate(char *date, int y, int m, int d);
 
@@ -91,4 +90,4 @@ void revJulian(int j, int y, int *d, int *m);
 
 int julian(int d, int m, int y);
 
-/*#endif*/ /* #define __CALCULATOR_OPERATIONS_H__ */
+#endif /* #define __CALCULATOR_OPERATIONS_H__ */
