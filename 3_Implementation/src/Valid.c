@@ -1,4 +1,5 @@
 /*To find whether a date entered is valid or not. */
+#include "dtmanip.h"
 int isValid(char *date)
 {
   int d,m,y;

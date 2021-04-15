@@ -1,4 +1,5 @@
 /*To get difference of two dates in days*/
+#include "dtmanip.h"
 int diffDays (char *datel, char *date2)
 {
     int d1,m1,y1,d2,m2,y2,j1,j2;

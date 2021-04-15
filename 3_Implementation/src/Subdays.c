@@ -1,4 +1,5 @@
 /*To subtract days from a date*/
+#include "dtmanip.h"
 void subDays(char *date,int days,char *newDate)
 {
     int d1, m1, y1, d2, m2, y2;

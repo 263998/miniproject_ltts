@@ -1,4 +1,5 @@
 /*To get difference of two dates in years, months and days*/
+#include "dtmanip.h"
 void diffYMD(char *datel, char *date2, int *y, int *m, int *d)
 {
    int d1, m1, y1, d2, m2, y2;

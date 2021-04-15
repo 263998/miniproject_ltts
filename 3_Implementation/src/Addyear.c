@@ -1,4 +1,5 @@
 /*To add years to a date*/
+#include "dtmanip.h"
 void addYear(char *date,int iyear,char *newDate)
 {
     int d,m,y;

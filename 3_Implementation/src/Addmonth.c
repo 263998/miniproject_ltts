@@ -1,4 +1,5 @@
 /* To add months to a date*/
+#include "dtmanip.h"
 void addMonth (char *date, int imonth, char *newDate)
 {
     int d,m,y,quot,rem;

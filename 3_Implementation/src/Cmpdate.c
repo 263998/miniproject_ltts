@@ -1,4 +1,5 @@
 /*To compare two dates*/
+#include "dtmanip.h"
 int cmpDate (char *date1,char *date2)
 {
     int d1, m1, y1, d2, m2, y2;

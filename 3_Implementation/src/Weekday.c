@@ -1,5 +1,5 @@
 /*To find day of week from a given date */
-#include<string.h>
+#include "dtmanip.h"
 void weekDay(char *date, char *dayWeek)
 {
     int d,m,y,j,f,h,fh,day;

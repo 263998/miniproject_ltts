@@ -1,4 +1,5 @@
 /*To split and form the date*/
+#include "dtmanip.h"
 void splitDate (char *date, int *y, int *m,int *d)
 {
     date[2]=date[5]='\0';

@@ -1,4 +1,5 @@
 /*To subtract months from a date*/
+#include "dtmanip.h"
 void subMonth (char *date, int dmonth, char *newDate)
 {
 int d, m, y, quot, rem;

@@ -1,4 +1,5 @@
 /*To subtract years from a date*/
+#include "dtmanip.h"
 void subYear(char *date,int dyear,char *newDate)
 {
    int d,m,y;

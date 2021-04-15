@@ -1,4 +1,5 @@
 /*Function to calculate julian days */
+#include "dtmanip.h"
 int julian(int d, int m, int y)
 {
     int j=d;
