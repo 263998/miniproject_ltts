@@ -6,17 +6,30 @@ BUILD = build
 
 # All source code files
 SRC = project_main.c\
-src/Adddays.c\Addmonth.c\Addyear.c\Cmpdate.c\Diffymt.c\Diffdays.c\Diffymd.c\Julian.c\Leap.c\Subdays.c\Submonth.c\Subyear.c\Valid.c\Weekday.c
+src/Adddays.c\
+src/Addmonth.c\ 
+src/Addyear.c\ 
+src/Cmpdate.c\ 
+src/Diffymt.c\ 
+src/Diffdays.c\ 
+src/Diffymd.c\ 
+src/Julian.c\ 
+src/Leap.c\ 
+src/Subdays.c\ 
+src/Submonth.c\ 
+src/Subyear.c\ 
+src/Valid.c\ 
+src/Weekday.c\
 
 # All test source files
-TEST_SRC = src/Adddays.c\Addmonth.c\Addyear.c\Diffdays.c\Subdays.c\Submonth.c\Subyear.c
+TEST_SRC = ${SRC}\
 test/test_calendar_operations.c\
 unity/unity.c\
 
 TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).out
 
 # All include folders with header files
-INC	= -Iinc\
+INC = -Iinc\
 -Iunity\
 
 #Library Inlcudes
