@@ -7,18 +7,18 @@ BUILD = build
 # All source code files
 SRC = project_main.c\
 src/Adddays.c\
-src/Addmonth.c\ 
-src/Addyear.c\ 
-src/Cmpdate.c\ 
-src/Diffymt.c\ 
-src/Diffdays.c\ 
-src/Diffymd.c\ 
-src/Julian.c\ 
-src/Leap.c\ 
-src/Subdays.c\ 
-src/Submonth.c\ 
-src/Subyear.c\ 
-src/Valid.c\ 
+src/Addmonth.c\
+src/Addyear.c\
+src/Cmpdate.c\
+src/Datefmt.c\
+src/Diffdays.c\
+src/Diffymd.c\
+src/Julian.c\
+src/Leap.c\
+src/Subdays.c\
+src/Submonth.c\
+src/Subyear.c\
+src/Valid.c\
 src/Weekday.c\
 
 # All test source files
