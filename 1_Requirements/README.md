@@ -21,4 +21,5 @@
 
 11.Subtract days from a given date.
 
+![image](https://user-images.githubusercontent.com/80392588/115009298-c70c0180-9ec9-11eb-9c90-c1ba3f019114.png)
 
